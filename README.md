@@ -1,6 +1,7 @@
 # GradescopeScraper
 
 Short Python script that scrapes all Gradescope data for a class
+
 No idea why they don't have a "Download All" button it's really annoying
 
 Inpsired by Python 2.x script written by YimengYang, found [here](https://github.com/YimengYang/gradescope)
