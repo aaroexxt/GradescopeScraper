@@ -18,3 +18,5 @@ Finally, `cd` to the script directory and run it:
 `python3 gradescope.py`
 
 You will then be prompted for your Gradescope username and password in plaintext (these are not used for anything other then authenticating your account)
+
+After answering `y` to confirm you want to download everything, the script will then download all of your files!
