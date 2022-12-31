@@ -90,11 +90,16 @@ for f in br.forms():
         for head in assignment_table.find_all("th"):
             a_res = head.find("a")
             if a_res:
-                assignment_links[a_res.get("aria-label")] = a_res.get("href")
+                assignment_links[a_res.get("aria-label").split(' ', 1)[1]] = a_res.get("href")
+
+        if (len(assignment_links) == 0):
+            print("No assignments found for {}".format(k))
+            os.chdir("../")
+            continue
 
         print("{}'s assignments:".format(k))
         for aName in assignment_links.keys():
-            print(aName.split(' ', 1)[1])
+            print(aName)
         print("Now downloading all assignments in '{}' (this may take a while)...".format(k))
 
         for name, l in tqdm(assignment_links.items()):
@@ -111,7 +116,7 @@ for f in br.forms():
             name = name.replace("/", " ")
             try:
                 br.retrieve(download_link,'{}.{}'.format(name, extension))[0]
-            except Exception as e:
-                print("Error message: {}".format(e.message))
+            except mechanize.HTTPError as e:
+                print("\nGot error code {} while retreiving: {}".format(e.code, name))
         os.chdir("../")
         print("Finished downloading all assignments for {}".format(k))

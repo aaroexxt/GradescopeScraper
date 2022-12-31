@@ -7,12 +7,14 @@ Inpsired by Python 2.x script written by YimengYang, found [here](https://github
 
 ## Instructions for Use
 
-First, install dependencies:
+Download this directory, and `cd` into it
+
+Then, install dependencies:
 
 `pip3 install mechanize tqdm html2text bs4`
 
-Then, `cd` to the script directory and run it:
+Finally, `cd` to the script directory and run it:
 
 `python3 gradescope.py`
 
-All of your classes should be downloaded :)
+You will then be prompted for your Gradescope username and password in plaintext (these are not used for anything other then authenticating your account)
