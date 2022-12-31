@@ -77,6 +77,7 @@ for f in br.forms():
     print("Step 2) Downloading all content (this may take a while)...")
     
     for k,v in links.items():
+        k = k.replace(" ", "_") # ensure that filename is valid
         if not os.path.exists(k):
             os.mkdir(k)
         else:
@@ -107,7 +108,10 @@ for f in br.forms():
                     break
             orig_filename = download_link.split("/")[-1]
             extension = orig_filename.split(".")[-1]
-            name = name.replace("/", " ") 
-            br.retrieve(download_link,'{}.{}'.format(name, extension))[0]
+            name = name.replace("/", " ")
+            try:
+                br.retrieve(download_link,'{}.{}'.format(name, extension))[0]
+            except Exception as e:
+                print("Error message: {}".format(e.message))
         os.chdir("../")
         print("Finished downloading all assignments for {}".format(k))
